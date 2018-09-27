@@ -19,11 +19,17 @@
                 <ul class="nav navbar-nav navbar-right">
                     
                     @if (Auth::check()) 
-                        <li><a href="#">マイページ</a></li>
-                        <li><a href="#">ログアウト</a></li>
+                        
+                        <li><a href="#">
+                            <span class="gravatar">
+                            <img src="{{ Gravatar::src(Auth::user()->email, 20) . '&d=mm' }}" alt="" class="img-circle">
+                            </span>
+                            マイページ</a>
+                        </li>
+                        <li><a href="{{ route('logout.get') }}">ログアウト</a></li>
                     @else 
                          <li><a href="{{ route('signup.get') }}">新規登録</a></li>
-                        <li><a href="#">ログイン</a></li>
+                        <li><a href="{{ route('login') }}">ログイン</a></li>
                     @endif
                 </ul>
             </div>
