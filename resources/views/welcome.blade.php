@@ -7,7 +7,7 @@
                 <h1>soccer posts</h1>
                 @if (Auth::check())
                 @else
-                    <a href="" class="btn btn-success btn-lg">あなたの声を届ける</a>
+                    <a href="{{ route('signup.get') }}" class="btn btn-success btn-lg">あなたの声を届ける</a>
                 @endif
             </div>
         </div>
