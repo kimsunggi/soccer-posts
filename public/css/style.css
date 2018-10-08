@@ -2,7 +2,7 @@
 
 /* body */
 body {
-    background: #f2f2f2;
+    background: white;
 }
 footer {
     margin-top: 40px;
@@ -10,7 +10,7 @@ footer {
 
 /* navbar */
 .navbar {
-    background-color: #fff;
+    background-color: navy;
 }
 
 /* cover */
@@ -40,6 +40,6 @@ footer {
     letter-spacing: 0.15em;
 }
 .cover .btn-success {
-    background-color: navy;
-    border-color: navy;
+    background-color: #DD0000;
+    border-color: #DD0000;
 }

@@ -28,10 +28,13 @@
                     </div>
 
                     <div class="text-right">
-                        {!! Form::submit('登録する', ['class' => 'btn btn-success']) !!}
+                        {!! Form::submit('登録', ['class' => 'btn btn-success']) !!}
                     </div>
                 {!! Form::close() !!}
             </div>
+        </div>
+        <div class="text-center">
+            <a href="{{ route('login') }}">ログインはこちら</a>
         </div>
     </div>
 </div>

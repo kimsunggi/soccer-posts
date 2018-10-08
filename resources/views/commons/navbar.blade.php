@@ -14,7 +14,7 @@
                 <ul class="nav navbar-nav navbar-center">
                     <li><a href="#">海外ニュース</a></li>
                     <li><a href="#">国内ニュース</a></li>
-                    <li><a href="#">アンケート</a></li>
+                    <li><a href="{{ route('chart.get') }}">アンケート</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     

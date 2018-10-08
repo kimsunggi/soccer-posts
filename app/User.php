@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -26,4 +27,42 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    //アンケート投稿
+    public function charts()
+    {
+        return $this->hasMany(Chart::class);
+    }
+    
+    
+    //投票
+    public function choices()
+    {
+        return $this->belongsToMany(Chart::class, 'chart_user', 'user_id', 'chart_id')->withPivot('choice')->withTimestamps();
+    }
+    
+    
+    
+    
+    
+    
+    
+    public function vote($chartId,$value)
+    {
+        // 既に vote しているかの確認
+        $exist = $this->is_voting($chartId);
+
+        if ($exist) {
+            return false;
+        } else {
+            $this->choices()->attach($chartId, ['choice' => $value]);
+            return true;
+        }
+    }
+
+    
+    
+    public function is_voting($chartId) {
+    return $this->choices()->where('chart_id', $chartId)->exists();
+    }
 }
