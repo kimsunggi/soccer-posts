@@ -82,7 +82,7 @@ class ChartsController extends Controller
     
     public function create()
     {
-        return view('create_chart');
+        return view('cerate_chart');
     }
     
     public function store(Request $request)
@@ -111,7 +111,7 @@ class ChartsController extends Controller
             'choice8' => $request->choice8,
         ]);
 
-        return redirect()->back();
+        return redirect()->route('chart.get');
     }
     
     public function destroy($id)

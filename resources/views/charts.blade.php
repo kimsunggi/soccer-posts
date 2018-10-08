@@ -27,7 +27,7 @@
     <ul class="media-list">
     @foreach ($charts as $chart)
         <?php $user = $chart->user; ?>
-        <li class="media">
+        <li class="panel panel-primary">
             <div class="media-left">
                 <img class="media-object img-rounded" src="{{ Gravatar::src($user->email, 50) }}" alt="">
             </div>
@@ -68,7 +68,7 @@
                                     @endfor  
                                 </fieldset>
                             </div>
-                            {!! Form::submit('投票', ['class' => 'btn btn-primary btn-block']) !!}
+                            {!! Form::submit('投票', ['class' => 'btn btn-primary']) !!}
                             {!! Form::close() !!}
                     @endif
                 @else
@@ -82,26 +82,25 @@
                             @endfor
                         </ul>
                     </div>
-                    <a href="{{ route('signup.get') }}" class="btn btn-primary btn-block">ログインして投票</a>
+                    <a href="{{ route('signup.get') }}" class="btn btn-primary ">ログインして投票</a>
                 @endif
                 
                 <div>
                 @if (Auth::id() == $chart->user_id)
                     {!! Form::open(['route' => ['charts.destroy', $chart->id], 'method' => 'delete']) !!}
-                        {!! Form::submit('削除', ['class' => 'btn btn-danger btn-xs']) !!}
+                        {!! Form::submit('削除', ['class' => 'btn btn-danger ']) !!}
                     {!! Form::close() !!}
                 @endif
                 </div>
             </div>
             <!-- googlechart-->
-            <div>    
             
-                
+            @if ($user->is_voting($chart->id))
+            <div>    
                 <img src="http://chart.apis.google.com/chart?chs=400x200&chd=t:{{$count_choice1->get($chart->id,0)}},{{$count_choice2->get($chart->id,0)}},{{$count_choice3->get($chart->id,0)}},{{$count_choice4->get($chart->id,0)}},{{$count_choice5->get($chart->id,0)}},{{$count_choice6->get($chart->id,0)}},{{$count_choice7->get($chart->id,0)}},{{$count_choice8->get($chart->id,0)}}&cht=p&chl={{$chart->choice1}}|{{$chart->choice2}}|{{$chart->choice3}}|{{$chart->choice4}}|{{$chart->choice5}}|{{$chart->choice6}}|{{$chart->choice7}}|{{$chart->choice8}}&chco=0000ff,ff0000,00ff00,00ffff">
                 
-                
-                
             </div>
+            @endif
                 
         </li>
     @endforeach
