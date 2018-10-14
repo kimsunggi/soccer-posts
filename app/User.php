@@ -40,13 +40,6 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Chart::class, 'chart_user', 'user_id', 'chart_id')->withPivot('choice')->withTimestamps();
     }
-    
-    
-    
-    
-    
-    
-    
     public function vote($chartId,$value)
     {
         // 既に vote しているかの確認
@@ -59,10 +52,25 @@ class User extends Authenticatable
             return true;
         }
     }
-
-    
-    
     public function is_voting($chartId) {
     return $this->choices()->where('chart_id', $chartId)->exists();
     }
+    
+    //コメント
+    public function articles()
+    {
+        return $this->belongsToMany(Article::class, 'comments', 'user_id', 'article_id')->withPivot('comment')->withTimestamps();
+    }
+    
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    
+    public function is_commenting($articleId)
+    {
+        return $this->articles()->where('article_id', $articleId)->exists();
+    }
+    
+    
 }

@@ -15,8 +15,8 @@
 @endsection
 
 @section('content')
-<p>海外ニュース</p>
-<div>
+<p>国内ニュース</p>
+<div >
     <ul style="list-style-type: none">
     @foreach ($articles as $article)
     <li>

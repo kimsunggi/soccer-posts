@@ -33,7 +33,7 @@
             </div>
             <div class="media-body">
                 <div>
-                    {!! link_to_route('users.show', $user->name, ['id' => $user->id]) !!} <span class="text-muted">posted at {{ $chart->created_at }}</span>
+                    <span>{{$user->name}}</span> <span class="text-muted">posted at {{ $chart->created_at }}</span>
                 </div>
                 
                 <!-- アンケート中身-->

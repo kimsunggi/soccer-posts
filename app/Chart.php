@@ -12,7 +12,6 @@ class Chart extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-        
     }
     
     //投票
