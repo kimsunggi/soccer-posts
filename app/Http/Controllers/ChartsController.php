@@ -116,9 +116,11 @@ class ChartsController extends Controller
         $chart = \App\Chart::find($id);
 
         if (\Auth::id() === $chart->user_id) {
+            
+            \DB::delete("DELETE FROM chart_user WHERE chart_id = ?", [$id]);
             $chart->delete();
         }
-
+        
         return redirect()->back();
     }
 }
